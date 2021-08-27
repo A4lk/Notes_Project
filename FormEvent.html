@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form name="register" method="post">
+      <input type="text" name="name" value="Abduazlziz">
+      <div >
+         <input type="email" name="email" value="Azooz@gmail.com">
+<div id="error">
+
+</div>
+
+      </div>
+
+      <div>
+        <label for="male">Male</label>
+        <input type="radio" id="male" name="gender" value="male">
+
+        <label for="female">female</label>
+        <input type="radio" name="gender" id="female" value="female">
+      </div>
+      <div>
+        <textarea name="bio" rows="8" cols="80">Hello</textarea>
+        <br>
+<label>Do You Agree With Him/her</label>
+        <input type="checkbox" name="agree" id="agree" value="">
+      </div>
+
+
+<div >
+  <h4>Where are you form ?</h4>
+  <select id="country" name="country">
+    <option value="Saudi">Saudi</option>
+    <option value="Egept">Egept</option>
+  </select>
+
+</div>
+<div>
+  <h4>Choose your hobbies</h4>
+  <select id="hobbies" name="hobbies" multiple>
+    <option value="sleeping">sleeping</option>
+    <option value="Redaing">Redaing</option>
+  </select>
+</div>
+
+    </form>
+    <script>
+
+
+
+    let form=document.forms.register;
+
+//اذا تبي مايسوي نسخ او لصق او قطع 
+
+        let bio=form.bio;
+      bio.oncopy=bio.oncut=bio.onpaste= function(){
+        alert("Please Write about your self ")
+          return false;
+
+      }
+      // let bio=form.bio;
+
+      // bio.oncopy=()=>{
+      //   alert('Sorry You can\'t copy here')
+      //   return false;
+      // }
+
+
+
+
+    // form.hobbies.onchange=function() {
+    //   if(this.value==='sleeping'){
+    //     alert("this not good hobby")
+    //   }else {
+    //     alert("Woow!!!");
+    //   }
+    // }
+    //
+    // let email=form.email;
+    //
+    // email.onfocus= ()=>{
+    //   error.innerText="";
+    // }
+    // email.onblur = ()=>{
+    //   if(!email.value.includes("@")){
+    //     error.innerText="Please provide correct email";
+    // }
+    // }
+
+//     let hobbiies=form.hobbies;
+//
+//     setTimeout(()=> {
+//
+// let selecteHobbies=Array.from(hobbiies.options)
+// .filter(option=>option.selected)
+// .map(option=>option.value);
+//
+//     console.log(selecteHobbies);
+//     }, 1000);
+
+
+
+  //   let country= form.country;
+  //
+  //   setTimeout( ()=> {
+  //     // country.value= "Egept";
+  //     country.options[1].selected = true;
+  //   //  console.log(country.value);
+  // }, 2000);
+//     let bio =form.bio;
+//     let agree= form.agree;
+//     //console.log(bio.value);
+// // To Estract the value in CheckBox
+//       setTimeout(()=>{
+//         console.log(agree.checked);
+//       },2000)
+
+
+      // let Formregister= document.forms.register;
+      //
+      // console.log(Formregister.name.value);
+      //
+      // console.log(Formregister.elements.gender[0].value);
+    </script>
+  </body>
+</html>

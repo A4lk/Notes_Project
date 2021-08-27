@@ -1,0 +1,56 @@
+
+   <html>
+
+
+    <head>
+    <title>indexedDB</title>
+    </head>
+    <body>
+        
+        <script>
+            //to create data
+            let openRequest= indexedDB.open('app',4);
+        
+            //to create to and check if version same or not
+            openRequest.onupgradeneeded=()=>{
+                let db=openRequest.result;
+
+                if (!db.objectStoreNames.contains("products")){
+                    db.createObjectStore('products',{keyPath:'id'})//to create object store = new table
+                }
+                if (!db.objectStoreNames.contains("users")){
+                    db.createObjectStore('users',{keyPath:'id'})//to create object store = new table
+                }
+
+                console.log('Upgrade needed');
+            }
+            //if createing is done , will be write in console is Success 
+            openRequest.onsuccess=()=>{
+                console.log('Success');
+                let db=openRequest.result;
+                db.onversionchange=()=>{//هذي لـ التغيرات التي تحصل لو تفتح صفحة جديدة 
+                    db.close();
+                    alert("Please reload your page , your database is outdate")
+                }
+                let tx=db.transaction(['products','users'],"readwrite")
+                let productObj=tx.objectStore('products')    
+            
+                let product={
+                  id:2,
+                  name:"Phone",
+                  price:"200SR"
+                }
+                
+                let inserRequset=productObj.add(product);
+              }
+
+            //if have any error 
+            openRequest.onerror=()=>{
+                console.log('error'+openRequest.error);
+            }
+
+           // indexedDB.deleteDatabase('app')// to delete database
+        </script>
+    </body>
+    </html>
+
